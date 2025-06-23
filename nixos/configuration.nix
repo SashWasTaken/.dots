@@ -1,4 +1,4 @@
-#my nix is 2.28.3 how to upgrade# This is your system's configuration file.
+# nix is 2.28.3 how to upgrade# This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
@@ -19,7 +19,7 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
-
+	systemd.oomd.enable = false;
   nixpkgs = {
     # You can add overlays here
     overlays = [
