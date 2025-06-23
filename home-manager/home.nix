@@ -40,18 +40,29 @@
 
   # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "sash";
+    homeDirectory = "/home/sash";
   };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [ 
+	tree
+	git
+	 
+	
+	];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
-
+  programs.git = {
+	enable = true;
+	userName = "SashWasTaken";
+	userEmail = "sash.software@proton.me";
+		extraConfig = {
+			init.defaultBranch = "main";
+			};
+		};
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

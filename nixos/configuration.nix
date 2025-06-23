@@ -1,4 +1,4 @@
-# This is your system's configuration file.
+#my nix is 2.28.3 how to upgrade# This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
@@ -67,7 +67,6 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nano"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -103,27 +102,27 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  #services.pulseaudio.enable = false;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+   # enable = true;
+   # alsa.enable = true;
+   # alsa.support32Bit = true;
+   # pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-  };
+  #};
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "sash";
+ # services.displayManager.autoLogin.enable = true;
+ # services.displayManager.autoLogin.user = "sash";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -131,26 +130,11 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Git
-	program.git = {
-		enable = true;
-		userName = "SashWasTaken";
-		userEmail = "sash.software@proton.me";
-		extraConfig = {
-			init.defaultBranch = "main";
-			};
-	};
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-	tree
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
